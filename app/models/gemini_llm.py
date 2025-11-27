@@ -6,8 +6,6 @@ from pydantic import BaseModel, Field
 
 
 class GeminiLLM(LLM):
-    """LangChain LLM wrapper for Gemini 2.0 Flash."""
-
     model_name: str = Field(default="gemini-2.0-flash")
     temperature: float = Field(default=0.0)
 

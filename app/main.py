@@ -6,14 +6,11 @@ from app.agent import build_agent
 from app.memory_store import load_memory, save_memory
 from dotenv import load_dotenv
 
-# Load .env
 load_dotenv()
 
 st.set_page_config(page_title="Conversational Knowledge Bot", layout="wide")
-st.title("Conversational Knowledge Bot — Gemini 2.0 Flash")
+st.title("Conversational Knowledge Bot")
 
-
-# Initialize agent + memory
 if "agent" not in st.session_state:
     st.session_state.agent = build_agent(verbose=False)
 
@@ -21,7 +18,6 @@ if "chat_history" not in st.session_state:
     st.session_state.chat_history = load_memory()
 
 
-# === Function to robustly extract LLM output ===
 def extract_output(result):
     # Case 1: dict with "output"
     if isinstance(result, dict) and "output" in result:
@@ -41,21 +37,15 @@ def extract_output(result):
     if isinstance(result, str):
         return result
 
-    # Fallback: convert to string
     return str(result)
 
 
-# Input form
 with st.form(key="input_form", clear_on_submit=True):
     user_input = st.text_input("You:")
     submitted = st.form_submit_button("Send")
 
 if submitted and user_input:
-
-    # add user message
     st.session_state.chat_history.append({"role": "user", "content": user_input})
-
-    # run agent safely
     try:
         raw = st.session_state.agent.invoke({"input": user_input})
         response = extract_output(raw)
@@ -63,14 +53,10 @@ if submitted and user_input:
     except Exception as e:
         response = f"Error from agent: {e}"
 
-    # add bot message
     st.session_state.chat_history.append({"role": "assistant", "content": response})
-
-    # persist history
     save_memory(st.session_state.chat_history)
 
 
-# Display messages
 for msg in st.session_state.chat_history:
     if msg.get("role") == "user":
         st.markdown(f"**You:** {msg.get('content')}")
