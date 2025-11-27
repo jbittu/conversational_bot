@@ -1,0 +1,26 @@
+[
+  {
+    "role": "user",
+    "content": "who is current ceo of amazon"
+  },
+  {
+    "role": "assistant",
+    "content": "The current CEO of Amazon is Andy Jassy."
+  },
+  {
+    "role": "user",
+    "content": "how many wife did he had"
+  },
+  {
+    "role": "assistant",
+    "content": "Andy Jassy has been married to his wife, Elana Rochelle Caplan, since 1997. Therefore, he has had one wife."
+  },
+  {
+    "role": "user",
+    "content": "does he has any child"
+  },
+  {
+    "role": "assistant",
+    "content": "Yes, Andy Jassy has two children."
+  }
+]
