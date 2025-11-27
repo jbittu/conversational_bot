@@ -35,7 +35,7 @@ streamlit run app/main.py
 
 
 
-## 🧩 Architecture
+## Architecture
 
 ```
  UI (Streamlit Chat)
@@ -49,7 +49,7 @@ Memory  Web‑Search  Gemini Flash
 ```
 
 
-## 📁 Repo Structure
+##  Repo Structure
 
 ```
 conversational-bot/
@@ -64,7 +64,7 @@ conversational-bot/
 │       └── web_search.py
 │
 ├── requirements.txt
-├── .env.example
+├── .env
 └── README.md
 ```
 
@@ -73,12 +73,11 @@ conversational-bot/
 ##  Setup
 
 ```bash
-git clone <repo-url>
-cd conversational-bot
-python -m venv venv && source venv/bin/activate      # mac/linux
-venv\Scripts\activate                              # windows
+git clone https://github.com/jbittu/conversational_bot.git
+cd conversational_bot
+python -m venv venv      
+venv\Scripts\activate                        
 pip install -r requirements.txt
-cp .env.example .env && nano .env
 ```
 
 Add inside `.env`:
@@ -100,8 +99,8 @@ Open → http://localhost:8501
 ##  Example Use
 
 ```
-User: Who is the CEO of OpenAI?
-Bot: Sam Altman.
+User: Who is the CEO of Google?
+Bot: Sundar Pichai.
 
 User: Where did he study?
 Bot: Stanford University.
@@ -111,7 +110,7 @@ Bot: (Search + reasoning response)
 ```
 
 
-## 📦 Requirements
+## Requirements
 
 ```
 streamlit>=1.28.0
